@@ -6,8 +6,89 @@
     </head>
     <body>
         <script>
+            /* 
+            MAKE variable string named computerSelection with value unknown
+            MAKE variable string named playerSelection with value unknown
 
+            FUNCTION getComputerChoice()
+                MAKE variable string named computerChoice with value unknown
+                MAKE a random choice of either rock, paper or scissors
+                ASSIGN that choice to variable computerChoice 
+                RETURN computerChoice
+            END FUNCTION
+            
+            FUNCTION getPlayerChoice()
+                MAKE variable string named playerChoice with value unknown    
+                READ users input
+                ASSIGN users input to variable playerChoice 
+                CALL function isValidAnswer(playerChoice)
+                ASSIGN output to variable playerChoice
+                IF (playerChoice equals exit)
+                    OUTPUT You canceled this round
+                    ASSIGN null to variable playerChoice
+                ELSE IF (playerChoice equals null)
+                    OUTPUT You didn't provide a valid answer
+                END IF
+                RETURN variable playerChoice         
+            END FUNCTION
 
+            FUNCTION isValidAnswer(answer)
+                MAKE variable string named result with value unknown
+                TRANSFORM answer to all lowercase
+                IF (answer is rock paper or scissors)
+                    TRANSFORM first character to uppercase
+                    ASSIGN to variable result 
+                ELSE IF (answer is equal to null or undefined)      
+                    ASSIGN exit to variable result
+                ELSE
+                    ASSIGN null to variable result 
+                END IF
+                RETURN variable result
+            END FUNCTION
+
+            FUNCTION playRound(playerSelection, computerSelection)
+                IF (playerSelection or computerSelection equals null or undefined)
+                    BREAK
+                END IF
+                MAKE variable int named result with value 0
+                IF (playerSelection equals computerSelection)
+                    ASSIGN to result variable "Tie"
+                ELSE IF (playerSelection equals Rock)
+                    IF (computerSelection equals Paper)
+                        OUTPUT "You Lost"
+                        ASSIGN to result variable -1
+                    ELSE
+                        OUTPUT "You Won"
+                        ASSIGN to result variable 1
+                    END IF
+                ELSE IF (playerSelection equals Papper)
+                    IF (computerSelection equals Scissors)
+                        OUTPUT "You Lost"
+                        ASSIGN to result variable -1
+                    ELSE
+                        OUTPUT "You Won"
+                        ASSIGN to result variable 1
+                    END IF
+                ELSE IF (playerSelection equals Scissors)
+                    IF (computerSelection equals Rock)
+                        OUTPUT "You Lost"
+                        ASSIGN to result variable -1
+                    ELSE
+                        OUTPUT "You Won"
+                        ASSIGN to result variable 1
+                    END IF
+                END IF
+                RETURN variable result
+            END FUNCTION
+
+            FUNCTION resetGame()
+                TODO to reassign player n computer between rounds
+            END FUNCTION
+            FUNCTION playGame()
+                TODO to put it all together and play a game
+            END FUNCTION
+            */
+            
 
 
 
