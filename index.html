@@ -7,9 +7,7 @@
     <body>
         <script>
             /* 
-            MAKE variable string named computerSelection with value unknown
-            MAKE variable string named playerSelection with value unknown
-
+            
             FUNCTION getComputerChoice()
                 MAKE variable string named computerChoice with value unknown
                 MAKE a random choice of either rock, paper or scissors
@@ -19,15 +17,14 @@
             
             FUNCTION getPlayerChoice()
                 MAKE variable string named playerChoice with value unknown    
-                READ users input
+                READ users input with question "What do you choose, rock, paper or scissors ?"
                 ASSIGN users input to variable playerChoice 
                 CALL function isValidAnswer(playerChoice)
                 ASSIGN output to variable playerChoice
                 IF (playerChoice equals exit)
-                    OUTPUT You canceled this round
-                    ASSIGN null to variable playerChoice
+                    OUTPUT You canceled the game
                 ELSE IF (playerChoice equals null)
-                    OUTPUT You didn't provide a valid answer
+                    OUTPUT You didn't provide a valid answer, round canceled
                 END IF
                 RETURN variable playerChoice         
             END FUNCTION
@@ -55,37 +52,68 @@
                     ASSIGN to result variable "Tie"
                 ELSE IF (playerSelection equals Rock)
                     IF (computerSelection equals Paper)
-                        OUTPUT "You Lost"
+                        OUTPUT "You Lost tada beats tada"
                         ASSIGN to result variable -1
                     ELSE
-                        OUTPUT "You Won"
+                        OUTPUT "You Won tada beats tada"
                         ASSIGN to result variable 1
                     END IF
                 ELSE IF (playerSelection equals Papper)
                     IF (computerSelection equals Scissors)
-                        OUTPUT "You Lost"
+                        OUTPUT "You Lost tada beats tada"
                         ASSIGN to result variable -1
                     ELSE
-                        OUTPUT "You Won"
+                        OUTPUT "You Won tada beats tada"
                         ASSIGN to result variable 1
                     END IF
                 ELSE IF (playerSelection equals Scissors)
                     IF (computerSelection equals Rock)
-                        OUTPUT "You Lost"
+                        OUTPUT "You Lost tada beats tada"
                         ASSIGN to result variable -1
                     ELSE
-                        OUTPUT "You Won"
+                        OUTPUT "You Won tada beats tada"
                         ASSIGN to result variable 1
                     END IF
                 END IF
                 RETURN variable result
             END FUNCTION
 
-            FUNCTION resetGame()
-                TODO to reassign player n computer between rounds
+            FUNCTION getNumberOfRounds()
+                MAKE variable string named input with value unknown
+                MAKE variable int named result with value unknown
+                READ user input with message "How many rounds would you like to play ? 1 to 5"
+
             END FUNCTION
+
             FUNCTION playGame()
-                TODO to put it all together and play a game
+                MAKE variable string named computerSelection with value undefined
+                MAKE variable string named playerSelection with value undefined
+                MAKE variable int named computerPoints with value 0
+                MAKE variable int named playerPoints with value 0
+                MAKE variable int named numberOfRounds with value 0
+                MAKE variable boolean named keepGoing with value true
+
+                WHILE (keepGoing is true AND numberOfRounds inferior to playerPoints added to computerPoints)
+                    CALL getPlayerChoice()
+                    ASSIGN the result to variable playerSelection
+                    IF (playerSelection equals exit OR numberOfRounds is a negative)
+                        ASSIGN to variable keepGoing the value false
+                        OUTPUT the message "You exited the game you played x rounds you won x of thoses and the computer won x"
+                        BREAK
+                    ELSE IF (playerSelection is not defined)
+                        CONTINUE
+
+                    ELSE 
+                        CALL getComputerChoice()
+                        ASSIGN the result to variable computerSelection
+                    END IF
+                END WHILE
+
+                OUTPUT the message "You played x rounds you won x of thoses and the computer won x"
+                
+
+
+
             END FUNCTION
             */
             
