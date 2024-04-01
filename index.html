@@ -175,22 +175,41 @@
             // END FUNCTION
             
             // FUNCTION getPlayerChoice()
+            function getPlayerChoice(){
             //     MAKE variable string named playerChoice with value unknown    
+                let playerChoice;
             //     READ users input with question "What do you choose, rock, paper or scissors ?"
             //     ASSIGN users input to variable playerChoice 
+                playerChoice = prompt("Pick between : Rock, Paper, Scissors");
             //     CALL function isValidAnswer(playerChoice)
             //     ASSIGN output to variable playerChoice
+                playerChoice = isValidAnswer(playerChoice);
             //     IF (playerChoice equals exit)
             //         OUTPUT You canceled the game
             //     ELSE IF (playerChoice equals null)
             //         OUTPUT You didn't provide a valid answer, round canceled
             //     END IF
-            //     RETURN variable playerChoice         
+                if (playerChoice === "exit"){
+                    console.log("You canceled the game");
+                }else if (playerChoice === null){
+                    console.log("You didn't provide a valid answer, round canceled");
+                }
+            //     RETURN variable playerChoice
+                return playerChoice;         
             // END FUNCTION
+            }
 
             // FUNCTION isValidAnswer(answer)
+            function isValidAnswer(answer){
             //     MAKE variable string named result with value unknown
-            //     TRANSFORM answer to all lowercase
+                let result;
+            //     TRANSFORM answer to all lowercase                                                 
+                if ( !answer || !answer  ){
+                    return "exit";
+                }else if (typeof(answer) === "string"){         // *** I shouldn't have to to this because i get my input from a prompt, ***
+                    answer = answer.toLowerCase();              // *** but just to be safe bc i don't try and catch errors ***
+                }
+                
             //     IF (answer is rock paper or scissors)
             //         TRANSFORM first character to uppercase
             //         ASSIGN to variable result 
@@ -199,8 +218,15 @@
             //     ELSE
             //         ASSIGN null to variable result 
             //     END IF
+                if (answer === "rock" || answer === "papper" || answer === "scissors") {
+                    result = answer.charAt(0).toUpperCase() + answer.substring(1);      
+                }else{
+                    result = null;
+                }
             //     RETURN variable result
+                return result;
             // END FUNCTION
+            }
 
             // FUNCTION playRound(playerSelection, computerSelection)
             //     MAKE variable int named result with value 0
