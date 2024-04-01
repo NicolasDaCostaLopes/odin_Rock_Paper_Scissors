@@ -44,10 +44,11 @@
             END FUNCTION
 
             FUNCTION playRound(playerSelection, computerSelection)
-                IF (playerSelection or computerSelection equals null or undefined)
-                    BREAK
-                END IF
                 MAKE variable int named result with value 0
+                IF (playerSelection or computerSelection equals null or undefined)                       ** With my flow i should not need to check again, but just in case ** 
+                    OUTPUT message "Either playerSelection or computerSelection is null or undefined"            ** I assigned a value, but i don't need since either way **
+                    RETURN variable result                                                                  ** It's going to get caught by my else in playGame() bc it's not 1 or -1 **
+                END IF
                 IF (playerSelection equals computerSelection)
                     ASSIGN to result variable "Tie"
                 ELSE IF (playerSelection equals Rock)
@@ -116,7 +117,7 @@
                 WHILE (keepGoing is true AND numberOfRounds inferior to playerPoints added to computerPoints)
                     CALL getPlayerChoice()
                     ASSIGN the result to variable playerSelection
-                    IF (playerSelection equals "exit" OR numberOfRounds is equal to -1)
+                    IF (playerSelection equals "exit")
                         ASSIGN to variable keepGoing the value false
                         OUTPUT the message "You exited the game you played x rounds you won x of thoses and the computer won x"
                         BREAK
@@ -129,15 +130,21 @@
                         ASSIGN result to variable roundOutcome
                             IF (roundOutcome equals 1)
                                 ADD 1 to variable playerPoints
+                                ASSIGN variable roundOutcome the value 0
                             ELSE IF (roundOutcome equals -1)
                                 ADD 1 to variable computerPoints
+                                ASSIGN variable roundOutcome the value 0
                             ELSE
-                                OUTPUT message "Unexpected result"
+                                OUTPUT message "Unexpected result, round canceled"
                             END IF
                         CONTINUE
                     END IF
                 END WHILE
-                OUTPUT the message "You played x rounds you won x of thoses and the computer won x"
+                IF (numberOfRounds equals -1)
+                    OUTPUT the message "You exited the game without playing a round"
+                ELSE    
+                    OUTPUT the message "You played x rounds you won x of thoses and the computer won x"
+                END IF
             END FUNCTION
             */
             
