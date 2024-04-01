@@ -81,8 +81,24 @@
             FUNCTION getNumberOfRounds()
                 MAKE variable string named input with value unknown
                 MAKE variable int named result with value unknown
-                READ user input with message "How many rounds would you like to play ? 1 to 5"
-
+                MAKE variable boolean named keepGoing with value true
+                WHILE (keepGoing is true)
+                    READ user input with message "How many rounds would you like to play ? 1 to 5"
+                    ASSIGN value to variable input
+                    IF (input is equal to null or undefined)
+                        ASSIGN to variable result the value -1
+                        ASSIGN to variable keepGoing the value false
+                        CONTINUE
+                    ELSE IF (input can be converted to an int and is between 1 and 5 (included))
+                        ASSIGN the value of input variable as an int to variable result
+                        ASSIGN to variable keepGoing the value false
+                        CONTINUE
+                    ELSE
+                        OUTPUT message "This is not a number between 1 and 5"
+                        CONTINUE                    
+                    END IF
+                END WHILE
+                RETURN variable result
             END FUNCTION
 
             FUNCTION playGame()
@@ -91,29 +107,37 @@
                 MAKE variable int named computerPoints with value 0
                 MAKE variable int named playerPoints with value 0
                 MAKE variable int named numberOfRounds with value 0
+                MAKE variable int named roundOutcome with value 0
                 MAKE variable boolean named keepGoing with value true
+
+                CALL getNumberOfRounds()
+                ASSIGN the result to variable numberOfRounds
 
                 WHILE (keepGoing is true AND numberOfRounds inferior to playerPoints added to computerPoints)
                     CALL getPlayerChoice()
                     ASSIGN the result to variable playerSelection
-                    IF (playerSelection equals exit OR numberOfRounds is a negative)
+                    IF (playerSelection equals "exit" OR numberOfRounds is equal to -1)
                         ASSIGN to variable keepGoing the value false
                         OUTPUT the message "You exited the game you played x rounds you won x of thoses and the computer won x"
                         BREAK
-                    ELSE IF (playerSelection is not defined)
+                    ELSE IF (playerSelection is null)
                         CONTINUE
-
                     ELSE 
                         CALL getComputerChoice()
                         ASSIGN the result to variable computerSelection
+                        CALL playRound(playerSelection, computerSelection)
+                        ASSIGN result to variable roundOutcome
+                            IF (roundOutcome equals 1)
+                                ADD 1 to variable playerPoints
+                            ELSE IF (roundOutcome equals -1)
+                                ADD 1 to variable computerPoints
+                            ELSE
+                                OUTPUT message "Unexpected result"
+                            END IF
+                        CONTINUE
                     END IF
                 END WHILE
-
                 OUTPUT the message "You played x rounds you won x of thoses and the computer won x"
-                
-
-
-
             END FUNCTION
             */
             
