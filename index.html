@@ -6,8 +6,11 @@
     </head>
     <body>
         <script>
-            /* 
-            
+
+            // This is in two parts, first my pseudocode only, second part it with javascript implementation
+
+
+            /*            
             FUNCTION getComputerChoice()
                 MAKE variable string named computerChoice with value unknown
                 MAKE a random choice of either rock, paper or scissors
@@ -48,6 +51,162 @@
                 IF (playerSelection or computerSelection equals null or undefined)                       ** With my flow i should not need to check again, but just in case ** 
                     OUTPUT message "Either playerSelection or computerSelection is null or undefined"            ** I assigned a value, but i don't need since either way **
                     RETURN variable result                                                                  ** It's going to get caught by my else in playGame() bc it's not 1 or -1 **
+                END IF
+                IF (playerSelection equals computerSelection)
+                    ASSIGN to result variable "Tie"
+                ELSE IF (playerSelection equals Rock)
+                    IF (computerSelection equals Paper)
+                        OUTPUT "You Lost tada beats tada"
+                        ASSIGN to result variable -1
+                    ELSE
+                        OUTPUT "You Won tada beats tada"
+                        ASSIGN to result variable 1
+                    END IF
+                ELSE IF (playerSelection equals Papper)
+                    IF (computerSelection equals Scissors)
+                        OUTPUT "You Lost tada beats tada"
+                        ASSIGN to result variable -1
+                    ELSE
+                        OUTPUT "You Won tada beats tada"
+                        ASSIGN to result variable 1
+                    END IF
+                ELSE IF (playerSelection equals Scissors)
+                    IF (computerSelection equals Rock)
+                        OUTPUT "You Lost tada beats tada"
+                        ASSIGN to result variable -1
+                    ELSE
+                        OUTPUT "You Won tada beats tada"
+                        ASSIGN to result variable 1
+                    END IF
+                END IF
+                RETURN variable result
+            END FUNCTION
+
+            FUNCTION getNumberOfRounds()
+                MAKE variable string named input with value unknown
+                MAKE variable int named result with value unknown
+                MAKE variable boolean named keepGoing with value true
+                WHILE (keepGoing is true)
+                    READ user input with message "How many rounds would you like to play ? 1 to 5"
+                    ASSIGN value to variable input
+                    IF (input is equal to null or undefined)
+                        ASSIGN to variable result the value -1
+                        ASSIGN to variable keepGoing the value false
+                        CONTINUE
+                    ELSE IF (input can be converted to an int and is between 1 and 5 (included))
+                        ASSIGN the value of input variable as an int to variable result
+                        ASSIGN to variable keepGoing the value false
+                        CONTINUE
+                    ELSE
+                        OUTPUT message "This is not a number between 1 and 5"
+                        CONTINUE                    
+                    END IF
+                END WHILE
+                RETURN variable result
+            END FUNCTION
+
+            FUNCTION playGame()
+                MAKE variable string named computerSelection with value undefined
+                MAKE variable string named playerSelection with value undefined
+                MAKE variable int named computerPoints with value 0
+                MAKE variable int named playerPoints with value 0
+                MAKE variable int named numberOfRounds with value 0
+                MAKE variable int named roundOutcome with value 0
+                MAKE variable boolean named keepGoing with value true
+
+                CALL getNumberOfRounds()
+                ASSIGN the result to variable numberOfRounds
+
+                WHILE (keepGoing is true AND numberOfRounds inferior to playerPoints added to computerPoints)
+                    CALL getPlayerChoice()
+                    ASSIGN the result to variable playerSelection
+                    IF (playerSelection equals "exit")
+                        ASSIGN to variable keepGoing the value false
+                        OUTPUT the message "You exited the game you played x rounds you won x of thoses and the computer won x"
+                        BREAK
+                    ELSE IF (playerSelection is null)
+                        CONTINUE
+                    ELSE 
+                        CALL getComputerChoice()
+                        ASSIGN the result to variable computerSelection
+                        CALL playRound(playerSelection, computerSelection)
+                        ASSIGN result to variable roundOutcome
+                            IF (roundOutcome equals 1)
+                                ADD 1 to variable playerPoints
+                                ASSIGN variable roundOutcome the value 0
+                            ELSE IF (roundOutcome equals -1)
+                                ADD 1 to variable computerPoints
+                                ASSIGN variable roundOutcome the value 0
+                            ELSE
+                                OUTPUT message "Unexpected result, round canceled"
+                            END IF
+                        CONTINUE
+                    END IF
+                END WHILE
+                IF (numberOfRounds equals -1)
+                    OUTPUT the message "You exited the game without playing a round"
+                ELSE    
+                    OUTPUT the message "You played x rounds you won x of thoses and the computer won x"
+                END IF
+            END FUNCTION
+            */
+
+
+            // ========================================================================
+
+            // ========================================================================
+            //      BELLOW  is the pseudocode implemented in javascript
+            // ========================================================================
+
+            // ========================================================================
+
+
+
+
+
+
+            /* 
+            
+            FUNCTION getComputerChoice()
+                MAKE variable string named computerChoice with value unknown
+                MAKE a random choice of either rock, paper or scissors
+                ASSIGN that choice to variable computerChoice 
+                RETURN computerChoice
+            END FUNCTION
+            
+            FUNCTION getPlayerChoice()
+                MAKE variable string named playerChoice with value unknown    
+                READ users input with question "What do you choose, rock, paper or scissors ?"
+                ASSIGN users input to variable playerChoice 
+                CALL function isValidAnswer(playerChoice)
+                ASSIGN output to variable playerChoice
+                IF (playerChoice equals exit)
+                    OUTPUT You canceled the game
+                ELSE IF (playerChoice equals null)
+                    OUTPUT You didn't provide a valid answer, round canceled
+                END IF
+                RETURN variable playerChoice         
+            END FUNCTION
+
+            FUNCTION isValidAnswer(answer)
+                MAKE variable string named result with value unknown
+                TRANSFORM answer to all lowercase
+                IF (answer is rock paper or scissors)
+                    TRANSFORM first character to uppercase
+                    ASSIGN to variable result 
+                ELSE IF (answer is equal to null or undefined)      
+                    ASSIGN exit to variable result
+                ELSE
+                    ASSIGN null to variable result 
+                END IF
+                RETURN variable result
+            END FUNCTION
+
+            FUNCTION playRound(playerSelection, computerSelection)
+                MAKE variable int named result with value 0
+                IF (playerSelection or computerSelection equals null or undefined)                       
+                    OUTPUT message "Either playerSelection or computerSelection is null or undefined"            
+                    RETURN variable result                                                                  
                 END IF
                 IF (playerSelection equals computerSelection)
                     ASSIGN to result variable "Tie"
