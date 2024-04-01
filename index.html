@@ -204,10 +204,10 @@
             //     MAKE variable string named result with value unknown
                 let result;
             //     TRANSFORM answer to all lowercase                                                 
-                if ( !answer  ){                     // *** This is to catch when you press enter without typing anything or press escape ***
+                if ( !answer  ){                                // *** This is to catch when you press enter without typing anything or press escape ***
                     return "exit";
                 }else if (typeof(answer) === "string"){         // *** I shouldn't have to to this because i get my input from a prompt, ***
-                    answer = answer.toLowerCase();              // *** but just to be safe bc i don't try and catch errors ***
+                    answer = answer.toLowerCase();              // *** but just to be safe bc i don't try and catch errors, and it might change in the future ***
                 }
                 
             //     IF (answer is rock paper or scissors)
