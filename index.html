@@ -163,7 +163,7 @@
 
                 //  *** This is was i used to test if my getComputerChoice() was not totally biased on a specific answer, 
                 //      Did a couple of testGetComputerChoice(300000) and got each of them within 700 of the other,
-                //      I'm no statistician, but this looks good enough for what i'm doing here, we'll call this random
+                //      I'm no statistician, but this looks good enough for what i'm doing here                           ***
 
             // function testGetComputerChoice(numberOfTimes){
             //     let nbrRocks = 0, 
@@ -309,9 +309,13 @@
             // END FUNCTION
 
             // FUNCTION getNumberOfRounds()
+            function getNumberOfRounds(){
             //     MAKE variable string named input with value unknown
+                let input;
             //     MAKE variable int named result with value unknown
+                let result;
             //     MAKE variable boolean named keepGoing with value true
+                let keepGoing = true;
             //     WHILE (keepGoing is true)
             //         READ user input with message "How many rounds would you like to play ? 1 to 5"
             //         ASSIGN value to variable input
@@ -328,8 +332,25 @@
             //             CONTINUE                    
             //         END IF
             //     END WHILE
+                while (keepGoing) {
+                    input = prompt("How many rounds would you like to play ? 1 up to 5", "3");
+                    if (!input) {
+                        result = -1;
+                        keepGoing = false;
+                        continue                
+                    }else if (1 <= +input && +input <= 5){
+                        result = +input;
+                        keepGoing = false;
+                        continue
+                    }else{
+                        console.log("This is not a number from 1 up to 5");
+                        continue
+                    }
+                }
             //     RETURN variable result
+                return result;
             // END FUNCTION
+            }
 
             // FUNCTION playGame()
             //     MAKE variable string named computerSelection with value undefined
