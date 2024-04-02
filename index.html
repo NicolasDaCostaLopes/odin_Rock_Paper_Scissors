@@ -273,11 +273,22 @@
             }
 
             // FUNCTION playRound(playerSelection, computerSelection)
+            function playRound(playerSelection, computerSelection){
+                let result;
             //     MAKE variable int named result with value 0
             //     IF (playerSelection or computerSelection equals null or undefined)                       
-            //         OUTPUT message "Either playerSelection or computerSelection is null or undefined"            
+            //         OUTPUT message "Either playerSelection or computerSelection is null or undefined" 
+            //      ** ASSIGN variable result value -10 **                              ** I forgot to account for tie in the result variable and 0 will be my tie return value **           
             //         RETURN variable result                                                                  
             //     END IF
+                if (!playerSelection || !computerSelection) {
+                    console.log(`One of these two variable was not suitable 
+                    \n\tplayerSelection : ${playerSelection} 
+                    \n\tcomputerSelection : ${computerSelection}`)
+                    result = -10;
+                    return result;
+                    
+                }
             //     IF (playerSelection equals computerSelection)
             //         ASSIGN to result variable "Tie"
             //     ELSE IF (playerSelection equals Rock)
@@ -305,8 +316,39 @@
             //             ASSIGN to result variable 1
             //         END IF
             //     END IF
+                if (playerSelection === computerSelection) {
+                    console.log(`Tie, you both chose ${computerSelection}, round canceled`);
+                    result = 0;
+                    return result;                              // ** To not need to check the other possibilities, even if i have the same return at the end of the large IF **                
+                }else if (playerSelection === "Rock"){
+                    if (computerSelection === "Papper") {
+                        console.log(`You Lost, computer chose ${computerSelection} and it beats your ${playerSelection}.`);
+                        result = -1;
+                    }else{
+                        console.log(`You Won, computer chose ${computerSelection} your ${playerSelection} beats it.`);
+                        result = 1;
+                    }
+                }else if (playerSelection === "Papper"){
+                    if (computerSelection === "Scissors") {
+                        console.log(`You Lost, computer chose ${computerSelection} and it beats your ${playerSelection}.`);
+                        result = -1;
+                    }else{
+                        console.log(`You Won, computer chose ${computerSelection} your ${playerSelection} beats it.`);
+                        result = 1;
+                    }
+                }else if (playerSelection === "Scissors"){
+                    if (computerSelection === "Rock") {
+                        console.log(`You Lost, computer chose ${computerSelection} and it beats your ${playerSelection}.`);
+                        result = -1;
+                    }else{
+                        console.log(`You Won, computer chose ${computerSelection} your ${playerSelection} beats it.`);
+                        result = 1;
+                    }
+                }
             //     RETURN variable result
+                return result;
             // END FUNCTION
+            }
 
             // FUNCTION getNumberOfRounds()
             function getNumberOfRounds(){
