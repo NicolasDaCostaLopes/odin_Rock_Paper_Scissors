@@ -53,7 +53,7 @@
                     RETURN variable result                                                                  ** It's going to get caught by my else in playGame() bc it's not 1 or -1 **
                 END IF
                 IF (playerSelection equals computerSelection)
-                    ASSIGN to result variable "Tie"
+                    ASSIGN to result variable value 0
                 ELSE IF (playerSelection equals Rock)
                     IF (computerSelection equals Paper)
                         OUTPUT "You Lost tada beats tada"
@@ -290,7 +290,7 @@
                     
                 }
             //     IF (playerSelection equals computerSelection)
-            //         ASSIGN to result variable "Tie"
+            //         ASSIGN to result variable value 0
             //     ELSE IF (playerSelection equals Rock)
             //         IF (computerSelection equals Paper)
             //             OUTPUT "You Lost tada beats tada"
@@ -395,24 +395,33 @@
             }
 
             // FUNCTION playGame()
+            function playGame(){
             //     MAKE variable string named computerSelection with value undefined
             //     MAKE variable string named playerSelection with value undefined
             //     MAKE variable int named computerPoints with value 0
             //     MAKE variable int named playerPoints with value 0
             //     MAKE variable int named numberOfRounds with value 0
-            //     MAKE variable int named roundOutcome with value 0
+            //     MAKE variable int named roundOutcome with value null
             //     MAKE variable boolean named keepGoing with value true
+                let computerSelection,
+                    playerSelection,
+                    computerPoints = 0,
+                    playerPoints = 0,
+                    numberOfRounds = 0,
+                    roundOutcome = null,
+                    keepGoing = true;
 
             //     CALL getNumberOfRounds()
             //     ASSIGN the result to variable numberOfRounds
+                numberOfRounds = getNumberOfRounds();
 
-            //     WHILE (keepGoing is true AND numberOfRounds inferior to playerPoints added to computerPoints)
+            //     WHILE (keepGoing is true AND numberOfRounds superior to playerPoints added to computerPoints)
             //         CALL getPlayerChoice()
             //         ASSIGN the result to variable playerSelection
             //         IF (playerSelection equals "exit")
             //             ASSIGN to variable keepGoing the value false
             //             OUTPUT the message "You exited the game you played x rounds you won x of thoses and the computer won x"
-            //             BREAK
+            //             CONTINUE
             //         ELSE IF (playerSelection is null)
             //             CONTINUE
             //         ELSE 
@@ -422,22 +431,54 @@
             //             ASSIGN result to variable roundOutcome
             //                 IF (roundOutcome equals 1)
             //                     ADD 1 to variable playerPoints
-            //                     ASSIGN variable roundOutcome the value 0
+            //                     ASSIGN variable roundOutcome the value null
             //                 ELSE IF (roundOutcome equals -1)
             //                     ADD 1 to variable computerPoints
-            //                     ASSIGN variable roundOutcome the value 0
+            //                     ASSIGN variable roundOutcome the value null
             //                 ELSE
             //                     OUTPUT message "Unexpected result, round canceled"
             //                 END IF
             //             CONTINUE
             //         END IF
             //     END WHILE
+                while (keepGoing && ((playerPoints + computerPoints) < numberOfRounds)) {        // ** Most likely too many parenthesis, but i have excel nightmares about missing some important ones **
+                    playerSelection = getPlayerChoice();
+                    if (playerSelection === "exit") {
+                        keepGoing = false;
+                        console.log(`You exited the game you played ${playerPoints + computerPoints} rounds, you won ${playerPoints} of thoses and the computer won ${computerPoints}.`);
+                        continue
+                        
+                    }else if (!playerSelection){
+                        continue   
+                    }else{
+                        computerSelection = getComputerChoice();
+                        roundOutcome = playRound(playerSelection, computerSelection);
+                        if (roundOutcome === 1) {
+                            console.log(`Score : \n\t${++playerPoints} for you \n\t${computerPoints} for the computer`);
+                            roundOutcome = null;
+                        }else if (roundOutcome === -1) {
+                            console.log(`Score : \n\t${playerPoints} for you \n\t${++computerPoints} for the computer`);
+                            roundOutcome = null;      
+                        }else if(roundOutcome === 0){
+                            console.log(`Score : \n\t${playerPoints} for you \n\t${computerPoints} for the computer`);
+                            roundOutcome = null;
+                        }else{
+                            console.log(`Unexpected result, round canceled \n\troundOutcome : ${roundOutcome}`);
+                        }
+                    }
+                }
             //     IF (numberOfRounds equals -1)
             //         OUTPUT the message "You exited the game without playing a round"
             //     ELSE    
             //         OUTPUT the message "You played x rounds you won x of thoses and the computer won x"
             //     END IF
+                if (numberOfRounds === -1){
+                    console.log("You exited the game without playing a round");
+                }else{
+                    console.log(`You played ${playerPoints + computerPoints} rounds, you won ${playerPoints} of thoses and lost ${computerPoints}. \n\n\tEnd of Game`);
+                }
             // END FUNCTION
+            }
             
             
 
