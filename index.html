@@ -161,18 +161,62 @@
             // ========================================================================
 
 
+                //  *** This is was i used to test if my getComputerChoice() was not totally biased on a specific answer, 
+                //      Did a couple of testGetComputerChoice(300000) and got each of them within 700 of the other,
+                //      I'm no statistician, but this looks good enough for what i'm doing here, we'll call this random
 
-
+            // function testGetComputerChoice(numberOfTimes){
+            //     let nbrRocks = 0, 
+            //         nbrPapper = 0, 
+            //         nbrScissors = 0,
+            //         keepGoing = true;
+                
+            //     while ((nbrPapper + nbrRocks + nbrScissors) < numberOfTimes) {
+            //         let currentResult = getComputerChoice();
+            //         switch (currentResult) {
+            //             case "Rock":
+            //                 ++nbrRocks;
+            //                 break;
+            //             case "Papper":
+            //                 ++nbrPapper;
+            //                 break;
+            //             case "Scissors":
+            //                 ++nbrScissors
+            //                 break;
+            //         }                    
+            //     }
+            //     console.log(`Total number of \n Rock \t\t${nbrRocks}\n Papper \t${nbrPapper}\n Scissors \t${nbrScissors}`)
+                
+            // }
 
 
             
             
             // FUNCTION getComputerChoice()
+            function getComputerChoice(){
             //     MAKE variable string named computerChoice with value unknown
+                let computerChoice;
+            //    ** MAKE variable string named result with value unknown **
+                let result;
             //     MAKE a random choice of either rock, paper or scissors
             //     ASSIGN that choice to variable computerChoice 
-            //     RETURN computerChoice
+                computerChoice = Math.floor(Math.random() * 3 + 1);
+                switch (computerChoice) {
+                    case 1:
+                        result = "Rock";
+                        break;
+                    case 2:
+                        result = "Papper";
+                        break;
+                    case 3:
+                        result = "Scissors";
+                        break;
+                }
+                
+            //     ** RETURN computerChoice ** RETURN variable result **
+                return result
             // END FUNCTION
+            }
             
             // FUNCTION getPlayerChoice()
             function getPlayerChoice(){
