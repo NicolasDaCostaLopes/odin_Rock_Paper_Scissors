@@ -454,9 +454,9 @@
                         computerSelection = getComputerChoice();
                         roundOutcome = playRound(playerSelection, computerSelection);
                         if (roundOutcome === 1) {
-                            console.log(`Score : \n\t${++playerPoints} for you \n\t${computerPoints} for the computer`);
-                            roundOutcome = null;
-                        }else if (roundOutcome === -1) {
+                            console.log(`Score : \n\t${++playerPoints} for you \n\t${computerPoints} for the computer`);        // ** This line is a big confusing to read, bc you see a console.log so
+                            roundOutcome = null;                                                                                // it's not important but inside it there is an increment, maybe not the
+                        }else if (roundOutcome === -1) {                                                                        // best for readability **
                             console.log(`Score : \n\t${playerPoints} for you \n\t${++computerPoints} for the computer`);
                             roundOutcome = null;      
                         }else if(roundOutcome === 0){
@@ -488,5 +488,6 @@
         </script>
         <h1>Open the console to play !</h1>
         <h2>CTRL + SHIFT + J</h2>
+        <p>Call <code>playGame()</code> in the console to start</p>
     </body>
 </html>
