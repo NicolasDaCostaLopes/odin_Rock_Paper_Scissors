@@ -62,7 +62,7 @@
                         OUTPUT "You Won tada beats tada"
                         ASSIGN to result variable 1
                     END IF
-                ELSE IF (playerSelection equals Papper)
+                ELSE IF (playerSelection equals Paper)
                     IF (computerSelection equals Scissors)
                         OUTPUT "You Lost tada beats tada"
                         ASSIGN to result variable -1
@@ -167,25 +167,25 @@
 
             // function testGetComputerChoice(numberOfTimes){
             //     let nbrRocks = 0, 
-            //         nbrPapper = 0, 
+            //         nbrPaper = 0, 
             //         nbrScissors = 0,
             //         keepGoing = true;
                 
-            //     while ((nbrPapper + nbrRocks + nbrScissors) < numberOfTimes) {
+            //     while ((nbrPaper + nbrRocks + nbrScissors) < numberOfTimes) {
             //         let currentResult = getComputerChoice();
             //         switch (currentResult) {
             //             case "Rock":
             //                 ++nbrRocks;
             //                 break;
-            //             case "Papper":
-            //                 ++nbrPapper;
+            //             case "Paper":
+            //                 ++nbrPaper;
             //                 break;
             //             case "Scissors":
             //                 ++nbrScissors
             //                 break;
             //         }                    
             //     }
-            //     console.log(`Total number of \n Rock \t\t${nbrRocks}\n Papper \t${nbrPapper}\n Scissors \t${nbrScissors}`)
+            //     console.log(`Total number of \n Rock \t\t${nbrRocks}\n Paper \t${nbrPaper}\n Scissors \t${nbrScissors}`)
                 
             // }
 
@@ -206,7 +206,7 @@
                         result = "Rock";
                         break;
                     case 2:
-                        result = "Papper";
+                        result = "Paper";
                         break;
                     case 3:
                         result = "Scissors";
@@ -262,7 +262,7 @@
             //     ELSE
             //         ASSIGN null to variable result 
             //     END IF
-                if (answer === "rock" || answer === "papper" || answer === "scissors") {
+                if (answer === "rock" || answer === "paper" || answer === "scissors") {
                     result = answer.charAt(0).toUpperCase() + answer.substring(1);      
                 }else{
                     result = null;
@@ -299,7 +299,7 @@
             //             OUTPUT "You Won tada beats tada"
             //             ASSIGN to result variable 1
             //         END IF
-            //     ELSE IF (playerSelection equals Papper)
+            //     ELSE IF (playerSelection equals Paper)
             //         IF (computerSelection equals Scissors)
             //             OUTPUT "You Lost tada beats tada"
             //             ASSIGN to result variable -1
@@ -321,14 +321,14 @@
                     result = 0;
                     return result;                              // ** To not need to check the other possibilities, even if i have the same return at the end of the large IF **                
                 }else if (playerSelection === "Rock"){
-                    if (computerSelection === "Papper") {
+                    if (computerSelection === "Paper") {
                         console.log(`You Lost, computer chose ${computerSelection} and it beats your ${playerSelection}.`);
                         result = -1;
                     }else{
                         console.log(`You Won, computer chose ${computerSelection} your ${playerSelection} beats it.`);
                         result = 1;
                     }
-                }else if (playerSelection === "Papper"){
+                }else if (playerSelection === "Paper"){
                     if (computerSelection === "Scissors") {
                         console.log(`You Lost, computer chose ${computerSelection} and it beats your ${playerSelection}.`);
                         result = -1;
