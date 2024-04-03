@@ -32,3 +32,5 @@ it was ok here because it was relatively simple, but a thing to keep in mind in 
 i'm pretty sure i saw pseudocoe online that fixed the issue that i had by listing the possible results of a function at the end of it
 
 Anyways, 👍 for pseudocode really helps out a lot for implementation ! :)
+
+Last note, weaving pseudocode and the implementation looks really ugly, i need to do it differently in the future
