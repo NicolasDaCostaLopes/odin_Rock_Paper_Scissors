@@ -110,7 +110,7 @@ function getNumberOfRounds() {
     }
     return result;
 }
-
+/*
 function playGame() {
     let computerSelection,
         playerSelection,
@@ -153,7 +153,7 @@ function playGame() {
         console.log(`You played ${playerPoints + computerPoints} rounds, you won ${playerPoints} of thoses and lost ${computerPoints}. \n\n\tEnd of Game`);
     }
 }
-
+*/
 
 
 
