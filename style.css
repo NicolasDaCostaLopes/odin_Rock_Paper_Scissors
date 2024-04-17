@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1 {
+  margin: 30px;
+}
+p {
+  margin: 15px;
+  font-size: large;
+  font-weight: 700;
+}
+.container {
+  display: flex;
+}
+.main {
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.selection {
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 75px;
+  width: 50%;
+  justify-content: space-around;
+}
+.selection > div {
+  width: 82px;
+}
