@@ -9,13 +9,21 @@
     <script src="script.js" defer></script>
     <div class="container main">
       <h1>Rock Paper Scissors</h1>
+      <div class="container score">
+        <p>Player Score</p>
+        <p>Computer Score</p>
+      </div>
+      <div class="container score">
+        <p id="playerscore">0</p>
+        <p id="computerscore">0</p>
+      </div>
       <p>Pick your choice</p>
       <div class="container selection">
         <div data-selection="rock">🗿</div>
         <div data-selection="paper">📄</div>
         <div data-selection="scissors">✂️</div>
       </div>
-      <p id="result">You won</p>
+      <p id="result">Best of 5</p>
     </div>
   </body>
 </html>

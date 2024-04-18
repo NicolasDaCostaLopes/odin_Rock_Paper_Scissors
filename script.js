@@ -110,50 +110,72 @@ function getNumberOfRounds() {
     }
     return result;
 }
-/*
-function playGame() {
-    let computerSelection,
-        playerSelection,
-        computerPoints = 0,
-        playerPoints = 0,
-        numberOfRounds = 0,
-        roundOutcome = null,
-        keepGoing = true;
-    numberOfRounds = getNumberOfRounds();
 
-    while (keepGoing && ((playerPoints + computerPoints) < numberOfRounds)) {        // ** Most likely too many parenthesis, but i have excel nightmares about missing some important ones **
-        playerSelection = getPlayerChoice();
-        if (playerSelection === "exit") {
-            keepGoing = false;
-            console.log(`You exited the game you played ${playerPoints + computerPoints} rounds, you won ${playerPoints} of thoses and the computer won ${computerPoints}.`);
-            continue
 
-        } else if (!playerSelection) {
-            continue
-        } else {
-            computerSelection = getComputerChoice();
-            roundOutcome = playRound(playerSelection, computerSelection);
-            if (roundOutcome === 1) {
-                console.log(`Score : \n\t${++playerPoints} for you \n\t${computerPoints} for the computer`);        // ** This line is a big confusing to read, bc you see a console.log so
-                roundOutcome = null;                                                                                // it's not important but inside it there is an increment, maybe not the
-            } else if (roundOutcome === -1) {                                                                        // best for readability, splitting the two would be better for future me **
-                console.log(`Score : \n\t${playerPoints} for you \n\t${++computerPoints} for the computer`);
-                roundOutcome = null;
-            } else if (roundOutcome === 0) {
-                console.log(`Score : \n\t${playerPoints} for you \n\t${computerPoints} for the computer`);
-                roundOutcome = null;
-            } else {
-                console.log(`Unexpected result, round canceled \n\troundOutcome : ${roundOutcome}`);
-            }
+const selection = document.querySelector(".selection");
+const result = document.querySelector("#result");
+const elementPlayerScore = document.querySelector("#playerscore");
+const elementComputerScore = document.querySelector("#computerscore");
+let playerScore = 0;
+let computerScore = 0;
+let numberOfRounds = 5;
+let doWeReset = 0;
+
+const updateResult = (roundOutcome) => {
+    if (typeof roundOutcome === "number") {
+        switch (roundOutcome) {
+            case -1:
+                result.textContent = `You lost`;
+                break;
+
+            case 0:
+                result.textContent = `Tie`;
+                break;
+
+            case 1:
+                result.textContent = `You won`;
+                break;
+
+            default:
+                result.textContent = `Something unexpected happend`;
+                break;
         }
-    }
-    if (numberOfRounds === -1) {
-        console.log("You exited the game without playing a round");
-    } else {
-        console.log(`You played ${playerPoints + computerPoints} rounds, you won ${playerPoints} of thoses and lost ${computerPoints}. \n\n\tEnd of Game`);
+    } else if (typeof roundOutcome === "string") {
+        result.textContent = roundOutcome;
     }
 }
-*/
+const updateScore = (roundOutcome) => {
+    switch (roundOutcome) {
+        case -1:
+            elementComputerScore.textContent = ++computerScore;
+            break;
+        case 0:
+            break;
+        case 1:
+            elementPlayerScore.textContent = ++playerScore;
+            break;
+        case "reset":
+            elementComputerScore.textContent = computerScore = 0;
+            elementPlayerScore.textContent = playerScore = 0;
+            updateResult("New game, same rules")
+            break;
+    }
+}
 
-
+selection.addEventListener("click", (event) => {
+    if ((playerScore + computerScore) < numberOfRounds) {
+        event.stopPropagation();
+        let playerChoice = isValidAnswer(event.target.attributes["data-selection"].value);
+        let computerChoice = getComputerChoice();
+        let roundOutcome = playRound(playerChoice, computerChoice);
+        updateResult(roundOutcome);
+        updateScore(roundOutcome);
+    } else if (doWeReset) {
+        updateScore("reset");
+        doWeReset = 0;
+    } else {
+        updateResult("Click on a choice again to reset the game");
+        doWeReset = 1;
+    }
+})
 
