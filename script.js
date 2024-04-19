@@ -126,7 +126,6 @@ const updateResult = (roundOutcome) => {
         switch (roundOutcome) {
             case -1:
                 result.textContent = `You lost the round`;
-                console.log(playerScore + computerScore)
                 if ((playerScore + computerScore) === numberOfRounds && computerScore > playerScore) result.textContent += " : Computer won the game";
                 if ((playerScore + computerScore) === numberOfRounds && computerScore < playerScore) result.textContent += " : You won the game";
                 break;
@@ -137,13 +136,12 @@ const updateResult = (roundOutcome) => {
 
             case 1:
                 result.textContent = `You won the round`;
-                console.log(playerScore + computerScore)
                 if ((playerScore + computerScore) === numberOfRounds && computerScore > playerScore) result.textContent += " : Computer won the game";
                 if ((playerScore + computerScore) === numberOfRounds && computerScore < playerScore) result.textContent += " : You won the game";
                 break;
 
             default:
-                result.textContent = `Something unexpected happend`;
+                result.textContent = `Something unexpected happend in updateResult()`;
                 break;
         }
     } else if (typeof roundOutcome === "string") {
@@ -165,6 +163,8 @@ const updateScore = (roundOutcome) => {
             elementPlayerScore.textContent = playerScore = 0;
             updateResult("New game, same rules")
             break;
+        default:
+            updateResult("Something unexpected happend in updateScore()")
     }
 }
 
