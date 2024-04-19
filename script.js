@@ -61,26 +61,26 @@ function playRound(playerSelection, computerSelection) {
         return result;                              // ** To not need to check the other possibilities, even if i have the same return at the end of the large IF **                
     } else if (playerSelection === "Rock") {
         if (computerSelection === "Paper") {
-            console.log(`You Lost, computer chose ${computerSelection} and it beats your ${playerSelection}.`);
+            // console.log(`You Lost, computer chose ${computerSelection} and it beats your ${playerSelection}.`);
             result = -1;
         } else {
-            console.log(`You Won, computer chose ${computerSelection} your ${playerSelection} beats it.`);
+            // console.log(`You Won, computer chose ${computerSelection} your ${playerSelection} beats it.`);
             result = 1;
         }
     } else if (playerSelection === "Paper") {
         if (computerSelection === "Scissors") {
-            console.log(`You Lost, computer chose ${computerSelection} and it beats your ${playerSelection}.`);
+            // console.log(`You Lost, computer chose ${computerSelection} and it beats your ${playerSelection}.`);
             result = -1;
         } else {
-            console.log(`You Won, computer chose ${computerSelection} your ${playerSelection} beats it.`);
+            // console.log(`You Won, computer chose ${computerSelection} your ${playerSelection} beats it.`);
             result = 1;
         }
     } else if (playerSelection === "Scissors") {
         if (computerSelection === "Rock") {
-            console.log(`You Lost, computer chose ${computerSelection} and it beats your ${playerSelection}.`);
+            // console.log(`You Lost, computer chose ${computerSelection} and it beats your ${playerSelection}.`);
             result = -1;
         } else {
-            console.log(`You Won, computer chose ${computerSelection} your ${playerSelection} beats it.`);
+            // console.log(`You Won, computer chose ${computerSelection} your ${playerSelection} beats it.`);
             result = 1;
         }
     }
