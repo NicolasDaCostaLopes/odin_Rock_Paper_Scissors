@@ -125,15 +125,21 @@ const updateResult = (roundOutcome) => {
     if (typeof roundOutcome === "number") {
         switch (roundOutcome) {
             case -1:
-                result.textContent = `You lost`;
+                result.textContent = `You lost the round`;
+                console.log(playerScore + computerScore)
+                if ((playerScore + computerScore) === numberOfRounds && computerScore > playerScore) result.textContent += " : Computer won the game";
+                if ((playerScore + computerScore) === numberOfRounds && computerScore < playerScore) result.textContent += " : You won the game";
                 break;
 
             case 0:
-                result.textContent = `Tie`;
+                result.textContent = `Tie for the round`;
                 break;
 
             case 1:
-                result.textContent = `You won`;
+                result.textContent = `You won the round`;
+                console.log(playerScore + computerScore)
+                if ((playerScore + computerScore) === numberOfRounds && computerScore > playerScore) result.textContent += " : Computer won the game";
+                if ((playerScore + computerScore) === numberOfRounds && computerScore < playerScore) result.textContent += " : You won the game";
                 break;
 
             default:
@@ -168,8 +174,8 @@ selection.addEventListener("click", (event) => {
         let playerChoice = isValidAnswer(event.target.attributes["data-selection"].value);
         let computerChoice = getComputerChoice();
         let roundOutcome = playRound(playerChoice, computerChoice);
-        updateResult(roundOutcome);
         updateScore(roundOutcome);
+        updateResult(roundOutcome);
     } else if (doWeReset) {
         updateScore("reset");
         doWeReset = 0;
